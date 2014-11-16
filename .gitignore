@@ -3,6 +3,3 @@ sftp-config*
 
 gulp/node_modules/*
 system/compass/.sass-cache/*
-
-2/gulp/node_modules/*
-2/system/compass/.sass-cache/*
