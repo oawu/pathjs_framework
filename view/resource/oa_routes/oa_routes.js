@@ -18,12 +18,7 @@
     js: {
       resource: [ 'jquery_v1.10.2/jquery-1.10.2.min.js',
                   'jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom.min.js',
-                  'imgLiquid_v0.9.944/imgLiquid-min.js',
-                  'jquery-timeago_v1.3.1/jquery.timeago.js',
-                  'jquery-timeago_v1.3.1/locales/jquery.timeago.zh-TW.js',
-                  'imagesloaded_v3.1.8/imagesloaded.pkgd.min.js',
-                  'pathjs_v0.8.4/path.min.js',
-                  'oa_slider_preview/oa_slider_preview.js',
+                  'pathjs_v0.8.4/path.min.js'
                  ],
       public: ['ga.js', 'fb.js']
     },
@@ -34,8 +29,8 @@
         symbol: '#!',
       },
       pages: [
-        { name: 'page1', content: 'p1' },
-        { name: 'page2', content: 'p2' },
+        { key: 'page1', page: 'p1' },
+        { key: 'page2', page: 'p2' },
       ]
     }
   }
@@ -119,12 +114,15 @@
           });
         };
         var setRoutes = function () {
-          option.routes.pages.map (function (t) { Path.map (option.routes.config.symbol + t.name).to (loadContent.bind (null, t.content)).exit (clearContent); });
+          option.routes.pages.map (function (t) { Path.map (option.routes.config.symbol + t.key).to (loadContent.bind (null, t.page)).exit (clearContent); });
           Path.rescue (function () { location.hash = option.routes.config.symbol + option.routes.config.rescue; });
 
           Path.root (option.routes.config.symbol + option.routes.config.root);
           Path.listen ();
         }
+
+        $('<link />').attr ('href', option.path.frame + option.frame.name + '/frame.css').attr ('rel', 'stylesheet').attr ('type', 'text/css').insertAfter ($('head link').last ());
+        $('<script />').attr ('src', option.path.frame + option.frame.name + '/frame.js').attr ('language', 'javascript').attr ('type', 'text/javascript').appendTo ('head');
 
         ajax (option.path.frame + option.frame.name + '/frame.html', function (r) {
           var titles = r.match (/<title.*?>([\s\S]*)<\/title>/gi);
