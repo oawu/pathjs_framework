@@ -129,6 +129,8 @@
         ajax (option.path.frame + option.frame.name + '/frame.html', function (r) {
           var titles = r.match (/<title.*?>([\s\S]*)<\/title>/gi);
           if (titles && titles.length && (titles = titles.map (function (t) { return /<title.*?>([\s\S]*)<\/title>/.exec (t)[1].trim (); }).filter (function (t) { return t; })) && titles.length && (titles = titles[0])) $('html head title').html (titles);
+          var metas = r.match (/<meta.*\/?>/gi);
+          if (metas && metas.length) metas.reverse ().map (function (t) {$(t).insertAfter ('html head title');});
           var bodies = r.match (/<body.*?>([\s\S]*)<\/body>/gi);
           if (bodies && bodies.length && (bodies = bodies.map (function (t) { return /<body.*?>([\s\S]*)<\/body>/.exec (t)[1].trim (); }).filter (function (t) { return t; })) && bodies.length && (bodies = bodies[0])) $('html body').html (bodies);
           setRoutes ();
