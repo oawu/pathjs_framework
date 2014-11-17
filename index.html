@@ -9,57 +9,12 @@
 
     <script type="text/javascript">
       var oa_routes = new window.OaRoutes ();
-
-      oa_routes.setPaths ({
-        resourcePath: 'view/resource/',
-        publicPath: 'view/public/',
-        framePath: 'view/frame/',
-        contentPath: 'view/content/'
-      });
-
-      oa_routes.setFrame ({
-        name: 'general',
-        selector: '#container'
-      });
-
-      oa_routes.setResourceCssList (
-        ['icomoon/icomoon.css']
-        )
-
-      oa_routes.setPublicCssList (
-        ['base.css']
-        )
-
-      oa_routes.setResourceJsList (
-        [ 'jquery_v1.10.2/jquery-1.10.2.min.js',
-          'jquery-ui-1.10.3.custom/jquery-ui-1.10.3.custom.min.js',
-          'imgLiquid_v0.9.944/imgLiquid-min.js',
-          'jquery-timeago_v1.3.1/jquery.timeago.js',
-          'jquery-timeago_v1.3.1/locales/jquery.timeago.zh-TW.js',
-          'imagesloaded_v3.1.8/imagesloaded.pkgd.min.js',
-          'pathjs_v0.8.4/path.min.js',
-          'oa_slider_preview/oa_slider_preview.js']
-        )
-
-      oa_routes.setPublicJsList (
-        ['ga.js', 'fb.js']
-      )
-      oa_routes.setRouteConfig ({
-          root: 'page1',
-          rescue: 'page1',
-          symbol: '#!'
-        });
-      oa_routes.setRoutePageList ([
-        { name: 'page1', content: 'p1' },
-        { name: 'page2', content: 'p2' },
-      ]);
-
-      oa_routes.loadCss ();
-      oa_routes.loadJs ();
-      oa_routes.loadPage ();
-
+      oa_routes.init ();
     </script>
+    
   </head>
+
   <body lang="zh-tw">
+
   </body>
 </html>
