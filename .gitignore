@@ -2,4 +2,4 @@
 sftp-config*
 
 gulp/node_modules/*
-
+compass/.sass-cache/*
