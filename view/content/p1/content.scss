@@ -1,0 +1,17 @@
+/**
+ * @author      OA Wu <comdan66@gmail.com>
+ * @copyright   Copyright (c) 2014 OA Wu Design
+ */
+@import "_oa";
+
+$containerTop: 50px;
+
+html {
+  body {
+    background: $mainBackground;
+    
+    #container {
+      border: 1px solid green;
+    }
+  }
+}

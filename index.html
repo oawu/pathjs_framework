@@ -8,7 +8,13 @@
     <script src="./view/resource/oa_routes/oa_routes.js" language="javascript" type="text/javascript" /></script>
 
     <script type="text/javascript">
-      var oa_routes = new window.OaRoutes ();
+      var oa_routes = new OaRoutes ();
+
+      oa_routes.setRoutePageList ([
+        { key: 'page1', page: 'p1' },
+        { key: 'page2', page: 'p2' },
+        ])
+
       oa_routes.init ();
     </script>
     
