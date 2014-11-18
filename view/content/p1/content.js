@@ -1,3 +1,5 @@
 $(function () {
-  alert ('Page1');
+  $('#btn').click (function () {
+    alert ('page 1  button')
+  });
 });

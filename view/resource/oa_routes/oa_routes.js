@@ -101,9 +101,9 @@
         };
         var loadContent = function (content) {
           clearContent ();
+         
           $('<link />').attr ('data-content', content).attr ('href', option.path.content + content + '/content.css').attr ('rel', 'stylesheet').attr ('type', 'text/css').insertAfter ($('head link').last ());
-          $('<script />').attr ('data-content', content).attr ('src', option.path.content + content + '/content.js').attr ('language', 'javascript').attr ('type', 'text/javascript').appendTo ('head');
-
+          
           ajax (option.path.content + content + '/content.html', function (r) {
             var titles = r.match (/<title.*?>([\s\S]*)<\/title>/gi);
             if (titles && titles.length && (titles = titles.map (function (t) { return /<title.*?>([\s\S]*)<\/title>/.exec (t)[1].trim (); }).filter (function (t) { return t; })) && titles.length && (titles = titles[0])) $('html head title').html (titles);
@@ -111,6 +111,8 @@
             if (metas && metas.length) metas.reverse ().map (function (t) {$(t).attr ('data-content', content).insertAfter ('html head title');});
             var bodies = r.match (/<body.*?>([\s\S]*)<\/body>/gi);
             if (bodies && bodies.length && (bodies = bodies.map (function (t) { return /<body.*?>([\s\S]*)<\/body>/.exec (t)[1].trim (); }).filter (function (t) { return t; })) && bodies.length && (bodies = bodies[0])) $(option.frame.selector).html (bodies);
+
+            $('<script />').attr ('data-content', content).attr ('src', option.path.content + content + '/content.js').attr ('language', 'javascript').attr ('type', 'text/javascript').appendTo ('head');
           });
         };
         var setRoutes = function () {
@@ -122,7 +124,6 @@
         }
 
         $('<link />').attr ('href', option.path.frame + option.frame.name + '/frame.css').attr ('rel', 'stylesheet').attr ('type', 'text/css').insertAfter ($('head link').last ());
-        $('<script />').attr ('src', option.path.frame + option.frame.name + '/frame.js').attr ('language', 'javascript').attr ('type', 'text/javascript').appendTo ('head');
 
         ajax (option.path.frame + option.frame.name + '/frame.html', function (r) {
           var titles = r.match (/<title.*?>([\s\S]*)<\/title>/gi);
@@ -132,6 +133,8 @@
           var bodies = r.match (/<body.*?>([\s\S]*)<\/body>/gi);
           if (bodies && bodies.length && (bodies = bodies.map (function (t) { return /<body.*?>([\s\S]*)<\/body>/.exec (t)[1].trim (); }).filter (function (t) { return t; })) && bodies.length && (bodies = bodies[0])) $('html body').html (bodies);
           setRoutes ();
+
+          $('<script />').attr ('src', option.path.frame + option.frame.name + '/frame.js').attr ('language', 'javascript').attr ('type', 'text/javascript').appendTo ('head');
         });
       }
       return this;
