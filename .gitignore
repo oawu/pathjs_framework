@@ -1,5 +1,0 @@
-.DS_Store
-sftp-config*
-
-gulp/node_modules/*
-compass/.sass-cache/*
